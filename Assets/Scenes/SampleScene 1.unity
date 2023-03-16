@@ -461,6 +461,9 @@ MonoBehaviour:
   moveSpeed: 5
   movement: {x: 0, y: 0}
   rb: {fileID: 83550928}
+  Weapons:
+  - {fileID: 11400000, guid: 24a9b79af0c054146b8b77b007f8060a, type: 2}
+  - {fileID: 11400000, guid: 31099314370c32543969375909835968, type: 2}
   CurrentWeapon: {fileID: 11400000, guid: 31099314370c32543969375909835968, type: 2}
   timeBtwShoot: 0.3
   health: 5
@@ -963,7 +966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &745733368
 MonoBehaviour:
   m_ObjectHideFlags: 0

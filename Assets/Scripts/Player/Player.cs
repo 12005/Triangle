@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public Weapon[] Weapons;
     public Weapon CurrentWeapon; 
     public float timeBtwShoot = 0f;
 
@@ -29,6 +30,14 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         PlayerPrefs.GetInt("HighScore", 0);
+        if(PlayerPrefs.GetString("WeaponName") == "p")
+        {
+            CurrentWeapon = Weapons[0];
+        }
+        else if(PlayerPrefs.GetString("WeaponName") == "fp")
+        {
+            CurrentWeapon = Weapons[1];
+        }
     }
 
     void Update()
