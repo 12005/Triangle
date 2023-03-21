@@ -744,8 +744,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 138209042}
-        m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
-        m_MethodName: quitGame
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: weaponsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
