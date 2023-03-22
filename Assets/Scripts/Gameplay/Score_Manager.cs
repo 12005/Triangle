@@ -17,6 +17,6 @@ public class Score_Manager : MonoBehaviour
    
     void Update()
     {
-        ScoreCounterText.text = "Score : " + ScoreValue.ToString();   
+        ScoreCounterText.text = ScoreValue.ToString();   
     }
 }
