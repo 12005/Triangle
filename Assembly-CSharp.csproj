@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Gameplay\WeaponEquip.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Score_Displayer.cs" />
     <Compile Include="Assets\Scripts\Player\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Player\DevTools.cs" />
     <Compile Include="Assets\Scripts\Gameplay\soundManager.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Gameplay\coolEffect.cs" />
