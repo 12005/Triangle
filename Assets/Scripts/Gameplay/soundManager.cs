@@ -13,6 +13,11 @@ public class soundManager : MonoBehaviour
         instance = this;    
     }
 
+    void Update()
+    {
+        
+    }
+
     public void playSoundFX(AudioClip clip)
     {
         soundFX.clip = clip;
