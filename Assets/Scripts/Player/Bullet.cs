@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, fireDirection, bulletSpeed * Time.deltaTime);
-        Destroy(this.gameObject, 3.5f);
+        Destroy(this.gameObject, 4f);
     }
 
 }
