@@ -8,6 +8,7 @@ public class Enemy_Tri : MonoBehaviour
     public float hitPoints;
     private Transform playerPos;
     public float followDistance;
+    public float DestoryDistance;
     private Player player;
 
     public Transform bulletPos;
@@ -81,6 +82,11 @@ public class Enemy_Tri : MonoBehaviour
         else
         {
             isInRange = true;
+        }
+
+        if (Vector2.Distance(transform.position, playerPos.position) > DestoryDistance)
+        {
+            Destroy(this.gameObject);                                                                                                     //destory if too much distance
         }
 
         Vector3 direction = playerPos.position - transform.position;                                                            //rotation

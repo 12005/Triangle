@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = Stats.PlayerSpeed; 
     public Vector2 movement;
     private Animator animator;
 
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public float timeBtwShoot = 0f;
 
     [SerializeField]
-    private int health;
+    private int health = Stats.PlayerHealth;
     public static bool isHit = false;
 
     public Joystick moveJoystick;
@@ -43,6 +43,10 @@ public class Player : MonoBehaviour
         else if (PlayerPrefs.GetString("WeaponName") == "fp")
         {
             CurrentWeapon = Weapons[1];
+        }
+        else if (PlayerPrefs.GetString("WeaponName") == "gs")
+        {
+            CurrentWeapon = Weapons[2];
         }
     }
 
@@ -73,7 +77,9 @@ public class Player : MonoBehaviour
         movement.x = moveJoystick.Horizontal;
         movement.y = moveJoystick.Vertical;
 
-        rb.MovePosition(rb.position + movement.normalized * Time.fixedDeltaTime * moveSpeed);
+        rb.velocity = movement.normalized * moveSpeed;
+
+
 
     }
 
@@ -93,7 +99,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButton(0))
             if (Time.time >= timeBtwShoot)
             {
-                CurrentWeapon.SpawnBullet();
+                CurrentWeapon.SpawnBullet(transform);
                 timeBtwShoot = Time.time + 1 / CurrentWeapon.Firerate;
             }
     }
@@ -142,6 +148,7 @@ public class Player : MonoBehaviour
         
         Destroy(this.gameObject);
         SceneManager.LoadScene(2);
+       
     }
  
 }

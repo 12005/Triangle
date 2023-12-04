@@ -129,9 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38147144591bcf4cb47b8175dbb8e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4
   hitPoints: 3
   followDistance: 4
+  DestoryDistance: 20
   bulletPos: {fileID: 4676818271943939018}
   bullet: {fileID: 117532747456102236, guid: 0234942974a0e8243882654062df3743, type: 3}
   deathEffect: {fileID: 78356310199332431, guid: 46c06cf57785f5b4e9e0a5e648da74d7, type: 3}

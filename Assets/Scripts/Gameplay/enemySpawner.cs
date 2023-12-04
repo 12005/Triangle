@@ -17,10 +17,14 @@ public class enemySpawner : MonoBehaviour
 
     IEnumerator spawnAnEnemy()
     {
-        Vector2 spawnPos = GameObject.Find("Player").transform.position;
-        spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 20)
+        {
+            Vector2 spawnPos = GameObject.Find("Player").transform.position;
+            spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
 
-        Instantiate(enemies[Random.Range(0, enemies.Length)], spawnPos, Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Length)], spawnPos, Quaternion.identity);
+        }
+
         yield return new WaitForSeconds(timeBtwSpawns);
         StartCoroutine(spawnAnEnemy());
     }

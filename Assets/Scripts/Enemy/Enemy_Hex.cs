@@ -8,6 +8,7 @@ public class Enemy_Hex : MonoBehaviour
     public float hitPoints;
     private Transform playerPos;
     public float followDistance;
+    public float DestoryDistance;
 
     private Player player;
 
@@ -69,6 +70,10 @@ public class Enemy_Hex : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, playerPos.position) > followDistance)                                                     //movement
             transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
+        
+        if (Vector2.Distance(transform.position, playerPos.position) > DestoryDistance){
+            Destroy(this.gameObject);                                                                                                     //destory if too much distance
+        }
 
         Vector3 direction = playerPos.position - transform.position;                                                            //rotation
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
