@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = Stats.PlayerSpeed; 
+    public float moveSpeed = Stats.maxPlayerSpeed; 
     public Vector2 movement;
     private Animator animator;
 
@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public float timeBtwShoot = 0f;
 
     [SerializeField]
-    private int health = Stats.PlayerHealth;
+    private float health = Stats.maxPlayerHealth;
+    public HealthManage healthManage;
     public static bool isHit = false;
 
     public Joystick moveJoystick;
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        healthManage.setMaxHealth(Stats.maxPlayerHealth);
         isHit = false;
         playerSprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour
             CurrentWeapon = Weapons[2];
         }
     }
-
+    
     void Update()
     {
         Rotation();
@@ -66,9 +68,22 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (((collision.gameObject.tag == "Enemy") && isHit == false))
+        if (((collision.gameObject.tag == "enemyTri") && isHit == false))
         {
-            takeDamage(1);
+            takeDamage(Stats.enemyTriHit);
+        }
+        if (((collision.gameObject.tag == "enemyHex") && isHit == false))
+        {
+            takeDamage(Stats.enemyHexHit);
+        }
+        if (((collision.gameObject.tag == "enemyBullet") && isHit == false))
+        {
+            takeDamage(Stats.enemyBulletHit);
+        }
+        if (((collision.gameObject.tag == "basicHeal") && isHit == false))
+        {
+            heal(Stats.basicHeal);
+            Destroy(collision.gameObject);
         }
     }
 
@@ -104,24 +119,30 @@ public class Player : MonoBehaviour
             }
     }
 
-    IEnumerator onHit()
+    IEnumerator onHit(float time)
     {
         animator.SetTrigger("Hit");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
         isHit = false;
         animator.ResetTrigger("Hit");
     }
 
-    public void takeDamage(int damage)
+    public void heal(float amount)
+    {
+        if((health+amount) <= Stats.maxPlayerHealth)
+        {
+            health += amount;
+            healthManage.setHealth(health);
+        }
+    }
+
+    public void takeDamage(float damage)
     {
         if (isHit == false)
         {
             isHit = true;
             health = health - damage;
-            for (int i = 0; i < damage; i++)
-            {
-                Destroy(GameObject.Find("Health Box").transform.GetChild(i).gameObject);
-            }
+            healthManage.setHealth(health);
             if (health <= 0)                                                                                                //check if health is zero before blink
             {
                 if (Score_Manager.ScoreValue > PlayerPrefs.GetInt("HighScore", 0))
@@ -132,12 +153,13 @@ public class Player : MonoBehaviour
                 StartCoroutine(death());    
             }
 
-            StartCoroutine(onHit());
+            StartCoroutine(onHit(Stats.invulnerableTime));
         }
     }
 
     IEnumerator death()
     {
+        rb.simulated = false;
         playerSprite.color = new Color(0, 0, 0, 0);
         moveJoystick.gameObject.SetActive(false);
         shootJoystick.gameObject.SetActive(false);
@@ -148,7 +170,7 @@ public class Player : MonoBehaviour
         
         Destroy(this.gameObject);
         SceneManager.LoadScene(2);
-       
+        
     }
  
 }

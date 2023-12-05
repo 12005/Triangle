@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_Drops.cs" />
     <Compile Include="Assets\Scripts\Player\DevTools.cs" />
     <Compile Include="Assets\Scripts\Gameplay\coolEffect.cs" />
     <Compile Include="Assets\Scripts\Player\Bullet.cs" />
@@ -78,8 +79,10 @@
     <Compile Include="Assets\Scripts\Gameplay\Weapon.cs" />
     <Compile Include="Assets\UJoystick\Content\Script\Core\bl_Joystick.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Tri.cs" />
+    <Compile Include="Assets\Scripts\Drops\basicHeal.cs" />
     <Compile Include="Assets\Scripts\Player\Melee.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\HealthManage.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Scripts\Gameplay\cameraFollow.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PauseMenu.cs" />

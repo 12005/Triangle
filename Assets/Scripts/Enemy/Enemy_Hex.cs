@@ -11,6 +11,7 @@ public class Enemy_Hex : MonoBehaviour
     public float DestoryDistance;
 
     private Player player;
+    public GameObject[] Drops;
 
     SpriteRenderer sr;
     Color defaultColor;
@@ -50,7 +51,8 @@ public class Enemy_Hex : MonoBehaviour
     {
         hitPoints -= GameObject.Find("Player").GetComponent<Player>().CurrentWeapon.Damage;
         if (hitPoints <= 0)                                                                                         //check if health is zero before changing color
-        {   
+        {
+            this.gameObject.GetComponent<Enemy_Drops>().Drop(Drops, this.transform);
             Destroy(this.gameObject);
             Score_Manager.ScoreValue += 50;
             Instantiate(deathEffect, transform.position, Quaternion.identity);

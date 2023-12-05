@@ -9,7 +9,10 @@ public class Enemy_Tri : MonoBehaviour
     private Transform playerPos;
     public float followDistance;
     public float DestoryDistance;
+
     private Player player;
+    public GameObject[] Drops;
+    public Enemy_Drops enemyDrop;
 
     public Transform bulletPos;
     public GameObject bullet;
@@ -57,6 +60,7 @@ public class Enemy_Tri : MonoBehaviour
         hitPoints -= GameObject.Find("Player").GetComponent<Player>().CurrentWeapon.Damage;
         if (hitPoints <= 0)                                                                                         //check if health is zero before changing color
         {
+            this.gameObject.GetComponent<Enemy_Drops>().Drop(Drops, this.transform);
             Destroy(this.gameObject);
             Score_Manager.ScoreValue += 100;
             Instantiate(deathEffect, transform.position, Quaternion.identity);
