@@ -7,7 +7,7 @@ public class Enemy_Drops : MonoBehaviour
 {
     public void Drop(GameObject[] drop, Transform objectTransform)
     {
-        if(Random.Range(0, 1) <= Stats.dropChance)
+        if(Random.Range(0f, 1f) <= Stats.dropChance)
         {
             Instantiate(drop[Random.Range(0, drop.Length)], objectTransform.position, Quaternion.identity);
         }

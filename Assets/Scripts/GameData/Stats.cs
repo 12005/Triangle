@@ -12,7 +12,7 @@ public class Stats : MonoBehaviour
     public static float enemyHexHit = 2;
     public static float enemyBulletHit = 1;
 
-    public static float dropChance = 0.25f;
+    public static float dropChance = 0.125f;
     public static float basicHeal = 1;
-
+    public static float basicInvulnerable = 3;
 }

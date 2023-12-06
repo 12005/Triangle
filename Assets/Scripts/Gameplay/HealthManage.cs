@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class HealthManage : MonoBehaviour
 {
     public Slider Slider;
+    public ParticleSystem healEffect;
 
     public float MaxHealth;
 
@@ -19,5 +20,6 @@ public class HealthManage : MonoBehaviour
     public void setHealth(float health)
     {
         Slider.value = health;
+        healEffect.Play();
     }
 }

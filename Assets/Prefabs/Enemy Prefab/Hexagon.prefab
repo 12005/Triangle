@@ -184,6 +184,7 @@ MonoBehaviour:
   DestoryDistance: 20
   Drops:
   - {fileID: 6515034229443162277, guid: c1516c34c6817e5419b74a2d935b15fc, type: 3}
+  - {fileID: 5968967833629954857, guid: 72bd168b9283546419639c3001b31db6, type: 3}
   deathEffect: {fileID: 78356310199332431, guid: 46c06cf57785f5b4e9e0a5e648da74d7, type: 3}
   explode: {fileID: 8923052567885420892, guid: 8ed895cf94ebb7f468d13351814bc834, type: 3}
 --- !u!114 &5957072548425212542

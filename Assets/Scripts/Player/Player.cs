@@ -80,9 +80,15 @@ public class Player : MonoBehaviour
         {
             takeDamage(Stats.enemyBulletHit);
         }
-        if (((collision.gameObject.tag == "basicHeal") && isHit == false))
+        if (((collision.gameObject.tag == "basicHeal")))
         {
             heal(Stats.basicHeal);
+            Destroy(collision.gameObject);
+        }
+        if ((collision.gameObject.tag == "basicInvulnerable"))
+        {
+            isHit = true;
+            StartCoroutine(onHit(Stats.basicInvulnerable));
             Destroy(collision.gameObject);
         }
     }

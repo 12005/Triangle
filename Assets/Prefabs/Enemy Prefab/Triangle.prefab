@@ -156,6 +156,7 @@ MonoBehaviour:
   DestoryDistance: 20
   Drops:
   - {fileID: 6515034229443162277, guid: c1516c34c6817e5419b74a2d935b15fc, type: 3}
+  - {fileID: 5968967833629954857, guid: 72bd168b9283546419639c3001b31db6, type: 3}
   enemyDrop: {fileID: 0}
   bulletPos: {fileID: 4676818271943939018}
   bullet: {fileID: 117532747456102236, guid: 0234942974a0e8243882654062df3743, type: 3}
