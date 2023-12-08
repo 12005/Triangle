@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_Drops.cs" />
     <Compile Include="Assets\Scripts\Player\DevTools.cs" />
     <Compile Include="Assets\Scripts\Gameplay\coolEffect.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\BackgroundParallax.cs" />
     <Compile Include="Assets\Scripts\Player\Bullet.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Score_Displayer.cs" />
