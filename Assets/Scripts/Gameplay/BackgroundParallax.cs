@@ -15,7 +15,6 @@ public class BackgroundParallax : MonoBehaviour
     {
         startpos = transform.position;
         lenght = GetComponent<SpriteRenderer>().bounds.size;
-        Debug.Log(lenght+" \n"+parallaxEffect);
     }
 
     void Update()
@@ -29,9 +28,9 @@ public class BackgroundParallax : MonoBehaviour
 
         transform.position = new Vector3(startpos.x + dist.x, startpos.y + dist.y, transform.position.z);
 
-        if (temp.x > startpos.x + lenght.x) { startpos.x += lenght.x; Debug.Log("X+"); }
-        else if (temp.x < startpos.x - lenght.x) { startpos.x -= lenght.x; Debug.Log("X-"); }
-        if (temp.y > startpos.y + lenght.y) { startpos.y += lenght.y; Debug.Log("Y+"); }
-        else if (temp.y < startpos.y - lenght.y) { startpos.y -= lenght.y; Debug.Log("Y-"); }
+        if (temp.x > startpos.x + lenght.x) { startpos.x += lenght.x; }
+        else if (temp.x < startpos.x - lenght.x) { startpos.x -= lenght.x; }
+        if (temp.y > startpos.y + lenght.y) { startpos.y += lenght.y; }
+        else if (temp.y < startpos.y - lenght.y) { startpos.y -= lenght.y; }
     }
 }

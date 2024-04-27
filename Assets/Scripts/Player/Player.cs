@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using Unity.Mathematics;
+using UnityEngine.Assertions.Must;
 
 public class Player : MonoBehaviour
 {
@@ -12,14 +14,21 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer playerSprite;
 
-    public Weapon[] Weapons;
+    //public Weapon[] Weapons;
     public Weapon CurrentWeapon;
+    public float firerate;
     public float timeBtwShoot = 0f;
 
     [SerializeField]
     private float health = Stats.maxPlayerHealth;
     public HealthManage healthManage;
     public static bool isHit = false;
+
+    public LevelUpMenu levelUpMenu;
+    public XpManage xpManage;
+    public int level = 1;
+    public int xp = 0;
+    public int xpMax = 30;
 
     public Joystick moveJoystick;
     public Joystick shootJoystick;
@@ -38,7 +47,7 @@ public class Player : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         PlayerPrefs.GetInt("HighScore", 0);
-        if (PlayerPrefs.GetString("WeaponName") == "p")
+        /*if (PlayerPrefs.GetString("WeaponName") == "p")
         {
             CurrentWeapon = Weapons[0];
         }
@@ -49,7 +58,8 @@ public class Player : MonoBehaviour
         else if (PlayerPrefs.GetString("WeaponName") == "gs")
         {
             CurrentWeapon = Weapons[2];
-        }
+        }*/
+        firerate = CurrentWeapon.Firerate;
     }
     
     void Update()
@@ -59,6 +69,15 @@ public class Player : MonoBehaviour
             shoot();
         if (shootJoystick.Horizontal <= -0.6 || shootJoystick.Vertical <= -0.6)
             shoot();
+
+        if (xp >= xpMax) {
+            level += 1;
+            xp -= xpMax; 
+            xpMax = 30 + (int)(30 * math.log(level));
+            levelUpMenu.pickAbility();
+            xpManage.levelup();
+        }
+        firerate = CurrentWeapon.Firerate;
     }
 
     private void FixedUpdate()
@@ -89,6 +108,11 @@ public class Player : MonoBehaviour
         {
             isHit = true;
             StartCoroutine(onHit(Stats.basicInvulnerable));
+            Destroy(collision.gameObject);
+        }
+        if (((collision.gameObject.tag == "basicXp")))
+        {
+            xp += Stats.basicXp;
             Destroy(collision.gameObject);
         }
     }

@@ -37,7 +37,10 @@ public class Enemy_Hex : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             onHit();
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            collision.gameObject.GetComponent<Bullet>().bulletSpeed = 2;
+            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         if (collision.gameObject.tag == "Player")
         {

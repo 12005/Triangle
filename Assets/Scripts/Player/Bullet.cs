@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletSpeed = 15f;
+    public float bulletSpeed = Stats.bulletSpeed;
 
     private Vector2 fireDirection;
+    public ParticleSystem bulletSpread;
 
     void Start()
     {
@@ -22,5 +23,4 @@ public class Bullet : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, fireDirection, bulletSpeed * Time.deltaTime);
         Destroy(this.gameObject, 4f);
     }
-
 }
